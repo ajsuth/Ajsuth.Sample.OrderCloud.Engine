@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "009faefe-b8db-4fb5-a3bb-10392d02224f",
+		"name": "Export to OrderCloud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Export To OrderCloud",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "ShopName",
+						"value": "{{ShopName}}"
+					},
+					{
+						"key": "ShopperId",
+						"value": "{{ShopperId}}"
+					},
+					{
+						"key": "Language",
+						"value": "{{Language}}"
+					},
+					{
+						"key": "Currency",
+						"value": "{{Currency}}"
+					},
+					{
+						"key": "Environment",
+						"value": "{{Environment}}"
+					},
+					{
+						"key": "GeoLocation",
+						"value": "{{GeoLocation}}"
+					},
+					{
+						"key": "CustomerId",
+						"value": "{{CustomerId}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{SitecoreIdToken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"processSettings\": {\n        \"@odata.type\": \"Ajsuth.Sample.OrderCloud.Engine.Models.ExportSettings\",\n        \"ImportType\": \"REPLACE\",\n        \"ProcessSites\": false,\n        \"ProcessCustomers\": false,\n        \"ProcessCatalogs\": false,\n        \"ProcessCategories\": false,\n        \"ProcessProducts\": false,\n        \"ProcessCategoryAssignments\": false,\n        \"ProcessCatalogAssignments\": false,\n        \"ProcessProductRelationships\": false\n    },\n    \"userSettings\": {\n        \"@odata.type\": \"Ajsuth.Sample.OrderCloud.Engine.Policies.UserPolicy\",\n        \"DefaultFirstName\": \"FirstName\",\n        \"DefaultLastName\": \"Lastname\"\n    },\n    \"siteSettings\": [\n        {\n            \"@odata.type\": \"Ajsuth.Sample.OrderCloud.Engine.Policies.SitePolicy\",\n            \"Name\": \"Storefront\",\n            \"Catalog\": \"Habitat_Master\",\n            \"Domain\": \"Storefront\",\n            \"Storefront\": \"Storefront\",\n            \"DefaultUserGroup\": \"Storefront_USD\"\n        }\n    ],\n    \"productSettings\": {\n        \"@odata.type\": \"Ajsuth.Sample.OrderCloud.Engine.Policies.SellableItemExportPolicy\",\n        \"MultiInventory\": true,\n        \"InventorySetId\": \"Habitat_Inventory\",\n        \"DefaultCurrency\":\"USD\"\n    }\n}"
+				},
+				"url": {
+					"raw": "{{ServiceHost}}/{{OpsApi}}/ExportToOrderCloud()",
+					"host": [
+						"{{ServiceHost}}"
+					],
+					"path": [
+						"{{OpsApi}}",
+						"ExportToOrderCloud()"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
